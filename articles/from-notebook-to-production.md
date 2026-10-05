@@ -1,4 +1,4 @@
-## From notebook to production: the handoff that matters
+# From notebook to production: the handoff that matters
 
 A notebook is an excellent place to think. It is a less reliable place to run an important process indefinitely. Moving a model toward production is not just a matter of wrapping a prediction function in an API; it is the handoff from an experiment to a repeatable system.
 
