@@ -46,6 +46,8 @@ button { color: inherit; }
 .site-header { position: sticky; top: 0; z-index: 10; min-height: 78px; padding: 0 6.1vw; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: rgba(247,248,250,.96); backdrop-filter: blur(14px); }
 .wordmark { display: inline-flex; align-items: center; gap: 10px; font: 600 15px var(--display); letter-spacing: 0; }
 .mark { display: grid; place-items: center; width: 32px; height: 32px; background: var(--ink); color: var(--paper); border-radius: 50%; font: 700 14px var(--display); }
+.site-header .mark { background: var(--lime); color: var(--ink); }
+.site-header .wordmark-dot { color: #efc66d; }
   .profile-side { border-left: 1px solid #536176; padding-left: 20px; }
 .main-nav { display: flex; align-items: center; gap: 32px; font-size: 13px; }
   .profile-side > span { color: #c1c9d5; }
@@ -179,6 +181,7 @@ kbd { border: 1px solid #c9cbc0; color: #777d72; padding: 2px 5px; font: 10px va
 .article-byline { color: var(--muted); font: 10px var(--mono); }
 .article-cover { width: 100%; max-height: 390px; object-fit: cover; margin-bottom: 42px; filter: saturate(.8); }
 .article-body { max-width: 680px; margin: 0 auto; font-size: 16px; line-height: 1.8; color: #343932; }
+.article-body h1 { font: 500 30px/1.2 var(--display); margin-bottom: 18px; }
 .article-body h2 { font-size: 27px; margin: 38px 0 14px; }
 .article-body h3 { font: 600 20px var(--display); margin: 30px 0 10px; }
 .article-body p { margin-bottom: 19px; }
@@ -233,6 +236,10 @@ kbd { border: 1px solid #c9cbc0; color: #777d72; padding: 2px 5px; font: 10px va
   .article-card { grid-template-columns: 115px minmax(0, 1fr); gap: 15px; }
   .card-image { width: 115px; height: 130px; }
   .card-title { font-size: 18px; }
+  .article-body h1 { font-size: 24px; }
+  .article-body h2 { font-size: 23px; }
+  .article-body h3 { font-size: 18px; }
+  .article-body blockquote { font-size: 18px; }
   .profile-band { grid-template-columns: .7fr 1.4fr .8fr; gap: 3vw; }
 }
 @media (max-width: 650px) {
@@ -300,7 +307,10 @@ kbd { border: 1px solid #c9cbc0; color: #777d72; padding: 2px 5px; font: 10px va
   .article-dek { font-size: 16px; }
   .article-cover { margin-bottom: 30px; max-height: 250px; }
   .article-body { font-size: 15px; }
-  .article-body h2 { font-size: 24px; }
+  .article-body h1 { font-size: 21px; }
+  .article-body h2 { font-size: 21px; }
+  .article-body h3 { font-size: 17px; }
+  .article-body blockquote { font-size: 16px; }
   .contact-main { display: block; padding: 53px 22px 70px; }
   .contact-intro { min-height: 0; padding-bottom: 34px; }
   .contact-intro h1 { font-size: clamp(52px, 13vw, 68px); }

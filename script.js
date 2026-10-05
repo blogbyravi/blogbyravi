@@ -24,6 +24,19 @@ const articles = [
     dek: 'The practical habits that help a promising experiment become a repeatable, observable service.'
   },
   {
+    slug: 'machine-learning-model-deployment-aws-ec2',
+    markdownFile: 'End_to_End_Deployement_For_ML.md',
+    title: 'Machine learning model deployment: from notebook to AWS EC2',
+    category: 'Machine Learning',
+    date: 'OCT 05, 2026',
+    readTime: '18 MIN READ',
+    description: 'A practical end-to-end guide to taking a model from notebook experiments to an AWS EC2 service.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=640&q=80',
+    alt: 'Rows of server racks in a data center',
+    color: 'green',
+    dek: 'Move a machine learning model from notebook to a usable service with reusable Python code, Streamlit, FastAPI, and AWS EC2.'
+  },
+  {
     slug: 'house-price-prediction-using-machine-learning',
     markdownFile: 'Use_Case_House_Price_Prediction.md',
     title: 'House price prediction using machine learning',
@@ -104,6 +117,7 @@ function renderArticles() {
 function showHome() {
   homeView.hidden = false;
   articleView.hidden = true;
+  delete articleView.dataset.articleSlug;
   document.title = 'BlogByRavi | Data Science & AI';
   window.scrollTo(0, 0);
 }
@@ -111,10 +125,31 @@ function showHome() {
 function renderMarkdown(markdown) {
   if (window.marked) {
     window.marked.setOptions({ gfm: true, breaks: false });
-    return window.marked.parse(markdown);
+    const parsed = new DOMParser().parseFromString(window.marked.parse(markdown), 'text/html');
+    const usedIds = new Set();
+    parsed.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((heading) => {
+      const baseId = heading.id || heading.textContent.trim().toLowerCase()
+        .replace(/[^\p{L}\p{N}\s_-]/gu, '')
+        .replace(/\s/g, '-');
+      let id = baseId;
+      let suffix = 1;
+      while (usedIds.has(id)) id = `${baseId}-${suffix++}`;
+      heading.id = id;
+      usedIds.add(id);
+    });
+    return parsed.body.innerHTML;
   }
   const escaped = markdown.replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
   return `<pre>${escaped}</pre>`;
+}
+
+function scrollToArticleFragment() {
+  const fragment = decodeURIComponent(location.hash.slice(1));
+  if (!fragment) return false;
+  const target = document.getElementById(fragment);
+  if (!target) return false;
+  target.scrollIntoView({ behavior: 'instant', block: 'start' });
+  return true;
 }
 
 async function showArticle(slug, shouldPush = false) {
@@ -124,6 +159,7 @@ async function showArticle(slug, shouldPush = false) {
     return;
   }
   if (shouldPush) history.pushState({ article: slug }, '', `?article=${encodeURIComponent(slug)}`);
+  articleView.dataset.articleSlug = slug;
   homeView.hidden = true;
   articleView.hidden = false;
   articleView.innerHTML = `
@@ -146,6 +182,7 @@ async function showArticle(slug, shouldPush = false) {
     const markdown = await response.text();
     const body = articleView.querySelector('.article-body');
     if (body) body.innerHTML = renderMarkdown(markdown);
+    scrollToArticleFragment();
   } catch (error) {
     const body = articleView.querySelector('.article-body');
     if (body) body.innerHTML = '<p>This note could not be loaded. Please open the site through a local web server so the Markdown file can be fetched.</p>';
@@ -167,6 +204,18 @@ searchInput.addEventListener('input', () => {
 });
 
 document.addEventListener('click', (event) => {
+  const link = event.target.closest('.article-body a[href^="#"]');
+  if (!link) return;
+  const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+  if (!target) return;
+  event.preventDefault();
+  if (location.hash !== link.hash) {
+    history.pushState(history.state, '', `${location.pathname}${location.search}${link.hash}`);
+  }
+  scrollToArticleFragment();
+});
+
+document.addEventListener('click', (event) => {
   const link = event.target.closest('a[href^="?article="]');
   if (!link) return;
   event.preventDefault();
@@ -185,8 +234,15 @@ document.addEventListener('click', (event) => {
 
 window.addEventListener('popstate', () => {
   const slug = new URLSearchParams(location.search).get('article');
-  if (slug) showArticle(slug);
-  else showHome();
+  if (!slug) {
+    showHome();
+    return;
+  }
+  if (articleView.dataset.articleSlug === slug && !articleView.hidden) {
+    if (!scrollToArticleFragment()) window.scrollTo(0, 0);
+    return;
+  }
+  showArticle(slug);
 });
 
 document.querySelector('.menu-toggle').addEventListener('click', (event) => {
