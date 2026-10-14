@@ -1,5 +1,18 @@
 const articles = [
   {
+    slug: 'pandas-functions-complete-guide',
+    markdownFile: 'Pandas_Functions_Complete_Guide.md',
+    title: 'Pandas Functions from Scratch: Complete Guide with Real-Time Examples',
+    category: 'Python & Data',
+    date: 'MARCH 15, 2026',
+    readTime: '25 MIN READ',
+    description: 'A practical reference to Pandas functions for exploring, cleaning, transforming, and analyzing real-world data.',
+    image: 'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=640&q=80',
+    alt: 'Giant panda sitting among bamboo',
+    color: 'blue',
+    dek: 'From reading files and cleaning data to grouping, reshaping, and a complete workflow, explore essential Pandas functions with real-world examples.'
+  },
+  {
     slug: 'rag-chatbots-that-earn-trust',
     title: 'RAG chatbots that earn trust',
     category: 'Generative AI',
@@ -102,6 +115,7 @@ function renderArticles() {
     <article class="article-card">
       <a class="card-image" href="?article=${encodeURIComponent(article.slug)}" tabindex="-1" aria-hidden="true">
         <img src="${article.image}" alt="${article.alt}" loading="lazy">
+        ${article.imageLabel ? `<span class="image-label">${article.imageLabel}</span>` : ''}
       </a>
       <div class="card-content">
         <p class="card-meta"><span class="card-category">${article.category.toUpperCase()}</span><span>·</span><time>${article.date}</time></p>
@@ -170,7 +184,10 @@ async function showArticle(slug, shouldPush = false) {
       <p class="article-dek">${article.dek}</p>
       <p class="article-byline">${article.readTime} &nbsp;·&nbsp; BLOGBYRAVI</p>
     </header>
-    <img class="article-cover" src="${article.image.replace('w=640', 'w=1400')}" alt="${article.alt}">
+    <div class="article-cover-wrap">
+      <img class="article-cover" src="${article.image.replace('w=640', 'w=1400')}" alt="${article.alt}">
+      ${article.imageLabel ? `<span class="image-label">${article.imageLabel}</span>` : ''}
+    </div>
     <div class="article-body" aria-live="polite"><p>Loading article…</p></div>
   `;
   document.title = `${article.title} | BlogByRavi`;
