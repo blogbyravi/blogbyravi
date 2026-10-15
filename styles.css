@@ -189,6 +189,12 @@ kbd { border: 1px solid #c9cbc0; color: #777d72; padding: 2px 5px; font: 10px va
 .article-body p { margin-bottom: 19px; }
 .article-body ul, .article-body ol { padding-left: 24px; margin: 0 0 22px; }
 .article-body li { padding: 3px 0; }
+.article-body table { display: block; width: max-content; max-width: 100%; overflow-x: auto; margin: 26px 0 34px; border-collapse: collapse; color: var(--ink); font-size: 13px; line-height: 1.55; }
+.article-body th, .article-body td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+.article-body th { background: #20324a; color: var(--paper); font: 500 10px/1.5 var(--mono); text-transform: uppercase; white-space: nowrap; }
+.article-body tbody tr:nth-child(even) { background: var(--paper-deep); }
+.article-body tbody tr:hover { background: #e1e8ef; }
+.article-body td code { white-space: nowrap; }
 .article-body blockquote { border-left: 3px solid var(--teal); padding: 4px 0 4px 19px; margin: 27px 0; color: #596052; font: 500 19px/1.55 var(--display); }
 .article-body code { background: #e8e9de; padding: 2px 5px; font: 13px var(--mono); }
 .article-body pre { overflow: auto; background: #252a25; color: #e8eddf; padding: 18px; font: 12px/1.7 var(--mono); }
