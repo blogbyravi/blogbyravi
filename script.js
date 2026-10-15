@@ -1,5 +1,18 @@
 const articles = [
   {
+    slug: 'from-data-scientist-to-domain-expert',
+    markdownFile: 'domain_expert.md',
+    title: 'From Data Scientist to Domain Expert',
+    category: 'Data Science',
+    date: 'OCT 15, 2026',
+    readTime: '7 MIN READ',
+    description: 'Why practical business context helps data scientists ask better questions and deliver more useful analysis.',
+    image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=640&q=80',
+    alt: 'Colleagues discussing a project together',
+    color: 'blue',
+    dek: 'You do not need decades of industry experience to work effectively with data. Learn how to build enough domain knowledge to understand requirements, interpret data, and collaborate with subject matter experts.'
+  },
+  {
     slug: 'pandas-functions-complete-guide',
     markdownFile: 'Pandas_Functions_Complete_Guide.md',
     title: 'Pandas Functions from Scratch: Complete Guide with Real-Time Examples',
