@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="contact.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261016-logo">
+  <script src="contact.js?v=20261016" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -19,6 +19,7 @@
       <a href="index.html#writing">Writing</a>
       <a href="about.html">About</a>
       <a class="nav-contact" href="contact.html" aria-current="page">Get in touch <span aria-hidden="true">↗</span></a>
+      <!-- <a class="nav-cv" href="articles/Ravi_Five_Plus_Data_Scientist.pdf" download>CV <span aria-hidden="true">↓</span></a> -->
     </nav>
     <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
   </header>
@@ -34,6 +35,34 @@
       </div>
       <div class="contact-index" aria-hidden="true">LET’S CONNECT / 01</div>
     </section>
+
+    <!-- <section class="contact-form-section" aria-labelledby="contact-form-title">
+      <p class="eyebrow">SEND A NOTE <span class="section-count">/ 01</span></p>
+      <h2 id="contact-form-title">What’s on your mind?</h2>
+      <form id="contact-form" action="https://formsubmit.co/ajax/ravikirankc@zohomail.in" method="POST">
+        <input type="hidden" name="_subject" value="New message from BlogByRavi">
+        <input type="hidden" name="_template" value="table">
+        <div class="contact-fields">
+          <label class="contact-field">
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" placeholder="Your name" required>
+          </label>
+          <label class="contact-field">
+            <span>Email address</span>
+            <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label class="contact-field contact-message-field">
+            <span>Message</span>
+            <textarea name="message" rows="6" placeholder="Tell me a little about it…" required></textarea>
+          </label>
+        </div>
+        <div class="contact-submit-row">
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+          <button class="submit-button" type="submit">Send message <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+      <p class="form-note">Your message and reply address will be sent to my inbox.</p>
+    </section> -->
   </main>
 
   <footer class="site-footer">

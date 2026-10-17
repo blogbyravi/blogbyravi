@@ -1,10 +1,10 @@
 const contactForm = document.querySelector('#contact-form');
 const formStatus = document.querySelector('#form-status');
-const submitButton = contactForm.querySelector('button[type="submit"]');
+const submitButton = contactForm?.querySelector('button[type="submit"]');
 const mainNav = document.querySelector('.main-nav');
 const menuToggle = document.querySelector('.menu-toggle');
 
-contactForm.addEventListener('submit', async (event) => {
+contactForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
   submitButton.disabled = true;
   submitButton.innerHTML = 'Sending…';
